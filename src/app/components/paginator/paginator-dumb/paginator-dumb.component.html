@@ -1,0 +1,8 @@
+<mat-paginator
+  [length]="page?.length"
+  [pageSize]="page?.pageSize"
+  [pageIndex]="page?.pageIndex"
+  [pageSizeOptions]="[1, 10, 50, 100]"
+  (page)="handlePageEvent($event)"
+>
+</mat-paginator>

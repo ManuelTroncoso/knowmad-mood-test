@@ -1,0 +1,10 @@
+<app-searchbar-smart></app-searchbar-smart>
+<app-heroes-dumb
+  [heroes]="(heroes$ | async) || []"
+  [isLoading]="(isLoading$ | async) || false"
+  (onDelete)="deleteHero($event)"
+  (onEdit)="editHero($event)"
+  (onCreate)="createHero()"
+></app-heroes-dumb>
+
+<app-paginator-smart></app-paginator-smart>

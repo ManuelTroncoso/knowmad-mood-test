@@ -1,0 +1,4 @@
+<app-heroes-create-upd-dumb
+  [hero]="(hero$ | async) ?? undefined"
+  (submitForm)="onSubmitForm($event)"
+></app-heroes-create-upd-dumb>

@@ -1,0 +1,55 @@
+<div *ngIf="isLoading; else tableData" class="loading-container">
+  <app-loading-spinner></app-loading-spinner>
+</div>
+
+<ng-template #tableData>
+  <table mat-table [dataSource]="heroes">
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>ID</th>
+      <td mat-cell *matCellDef="let hero">{{ hero.id }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Name</th>
+      <td mat-cell *matCellDef="let hero">
+        {{ hero.name | capitalizeFirstLetter }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Actions</th>
+      <td mat-cell *matCellDef="let hero">
+        <button
+          mat-icon-button
+          aria-label="Edit"
+          (click)="editHero(hero.id)"
+          [disabled]="hero.editing"
+        >
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button
+          mat-icon-button
+          aria-label="Delete"
+          (click)="deleteHero(hero.id)"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="['id', 'name', 'actions']"></tr>
+    <tr mat-row *matRowDef="let row; columns: ['id', 'name', 'actions']"></tr>
+  </table>
+  <div class="center" *ngIf="heroes.length == 0 && !isLoading">
+    <img
+      src="https://t4.ftcdn.net/jpg/04/72/65/73/360_F_472657366_6kV9ztFQ3OkIuBCkjjL8qPmqnuagktXU.jpg"
+      alt=""
+    />
+  </div>
+  <div class="aling-end">
+    <button mat-button (click)="createHero()">
+      CreateHero
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+</ng-template>

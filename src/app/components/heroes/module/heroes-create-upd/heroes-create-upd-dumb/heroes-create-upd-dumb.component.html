@@ -1,0 +1,30 @@
+<h1>Hero Information Form:</h1>
+
+<form [formGroup]="heroForm" class="hero-edit-form" (ngSubmit)="onSubmit()">
+  <mat-form-field appearance="fill">
+    <mat-label for="heroName">Hero name</mat-label>
+    <input
+      appUpperCase
+      matInput
+      formControlName="name"
+      id="heroName"
+      placeholder="Hero name"
+    />
+    <mat-error *ngIf="heroForm.get('name')?.hasError('required')">
+      The name is required
+    </mat-error>
+    <mat-error *ngIf="heroForm.get('name')?.hasError('maxlength')">
+      Max. 10 characters
+    </mat-error>
+  </mat-form-field>
+
+  <button
+    type="submit"
+    mat-raised-button
+    color="primary"
+    [disabled]="heroForm.invalid"
+    class="submit-button"
+  >
+    Save
+  </button>
+</form>
