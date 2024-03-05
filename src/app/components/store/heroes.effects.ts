@@ -46,7 +46,7 @@ export class HeroesEffects {
     )
   );
 
-  upsertHeroes$ = createEffect(() =>
+  updateHeroes$ = createEffect(() =>
     this.actions$.pipe(
       ofType(updateHeroes),
       withLatestFrom(this.store.select(heroesStateSelector)),

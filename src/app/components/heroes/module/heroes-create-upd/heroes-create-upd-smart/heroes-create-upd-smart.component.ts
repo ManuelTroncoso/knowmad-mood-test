@@ -22,10 +22,10 @@ export class HeroesCreateUpdSmartComponent implements OnInit {
   mode: 'create' | 'edit' = 'edit';
 
   constructor(
-    private route: ActivatedRoute,
-    private router: Router,
-    private store: Store,
-    private _snackBar: MatSnackBar
+    public route: ActivatedRoute,
+    public router: Router,
+    public store: Store,
+    public _snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {

@@ -37,8 +37,11 @@ app.get("/api/heroes", (req, res) => {
       const totalRows = rows.length;
       const totalPages = Math.ceil(totalRows / parsedPageSize);
 
+      let finalPageIndex = parsedPageIndex;
       // Ajustar la página solicitada si es mayor que el número total de páginas
-      const finalPageIndex = Math.min(parsedPageIndex, totalPages - 1);
+      if (totalPages - 1 >= 0) {
+        finalPageIndex = Math.min(parsedPageIndex, totalPages - 1);
+      }
 
       const startIndex = finalPageIndex * parsedPageSize;
       const endIndex = startIndex + parsedPageSize;

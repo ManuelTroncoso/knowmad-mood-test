@@ -22,20 +22,16 @@ export class HeroesCreateUpdDumbComponent implements OnChanges {
     name: new FormControl('', [Validators.required, Validators.maxLength(10)]),
   });
 
-  get nameControl() {
-    return this.heroForm.get('name');
-  }
-
-  ngOnChanges({ heroe }: SimpleChanges): void {
-    if (heroe && heroe.currentValue) {
+  ngOnChanges({ hero }: SimpleChanges): void {
+    if (hero && hero.currentValue) {
       this.heroForm.patchValue({
-        name: this.hero?.name ?? '',
+        name: this.hero?.name,
       });
     }
   }
 
   onSubmit(): void {
-    const name = this.nameControl?.value ?? '';
-    this.submitForm.emit(name);
+    const name = this.heroForm.get('name')?.value;
+    this.submitForm.emit(name ?? '');
   }
 }
